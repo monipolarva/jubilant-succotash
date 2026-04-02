@@ -1,0 +1,80 @@
+:root {
+  --bg: #f0f2f5;
+  --card: #ffffff;
+  --primary: #4f46e5;
+  --primary-light: #e0e7ff;
+  --text: #111827;
+  --text-sec: #6b7280;
+  --ok: #059669;
+  --ok-bg: #d1fae5;
+  --warn: #dc2626;
+  --warn-bg: #fee2e2;
+  --radius: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.planner-wrap {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 32px;
+  max-width: 720px;
+  width: 100%;
+}
+
+header { text-align: center; margin-bottom: 28px; }
+header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 6px; }
+.note { color: var(--text-sec); font-size: 0.9rem; background: var(--primary-light); display: inline-block; padding: 4px 12px; border-radius: 20px; }
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.item-card {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+  padding: 14px;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.item-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.05); }
+
+.item-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
+.item-meta { font-size: 0.8rem; color: var(--text-sec); margin-bottom: 10px; }
+
+.bar-track { height: 4px; background: #eee; border-radius: 2px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--primary); border-radius: 2px; }
+
+.dot {
+  position: absolute; top: 10px; right: 10px;
+  width: 6px; height: 6px; border-radius: 50%; background: #ccc;
+}
+.dot.active { background: var(--primary); box-shadow: 0 0 6px var(--primary); }
+
+.status-box {
+  text-align: center; padding: 12px; border-radius: var(--radius);
+  font-weight: 600; letter-spacing: 0.3px;
+}
+.status-ok { background: var(--ok-bg); color: var(--ok); border: 1px solid #a7f3d0; }
+.status-warn { background: var(--warn-bg); color: var(--warn); border: 1px solid #fecaca; }
+
+@media (max-width: 480px) {
+  .planner-wrap { padding: 20px; }
+  .task-grid { grid-template-columns: repeat(2, 1fr); }
+}
